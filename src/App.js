@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import PostForm from './components/PostForm';
 import AllPost from './components/AllPost';
+import Counting from './components/Counting';
 
 class App extends Component {
   render() {
@@ -12,6 +13,7 @@ class App extends Component {
           </div>
           <PostForm />
           <AllPost />
+          <Counting />
       </div>
     );
   }
