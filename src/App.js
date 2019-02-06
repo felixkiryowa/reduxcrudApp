@@ -7,8 +7,11 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-            <PostForm />
-           <AllPost />
+          <div className="navbar">
+            <h2 className="center ">Post It</h2>
+          </div>
+          <PostForm />
+          <AllPost />
       </div>
     );
   }

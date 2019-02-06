@@ -10,6 +10,7 @@ class PostForm extends React.Component {
           this.state = {
               title : '',
               body: ''
+             
           }
       }
 
@@ -25,15 +26,16 @@ class PostForm extends React.Component {
          const post_data = {
             id:new Date(),
             title:this.state.title,
-            body:this.state.body
+            body:this.state.body,
+            editing:false
          }
          this.props.postArticle(post_data);
       }
 
         render() {
             return (
-                <div>
-                    <h1>Create Post</h1>
+                <div className="post-container">
+                    <h1 className="post_heading">Create Post</h1>
                     <form onSubmit={this.handleSubmit.bind(this)}>
                         <input name="title" value={this.state.title} required type="text" placeholder="Enter Post Title" onChange={this.handleChange.bind(this)} /><br /><br />
                         <textarea  name="body" value={this.state.body} required rows="5" cols="28" placeholder="Enter Post" onChange={this.handleChange.bind(this)} /><br /><br />

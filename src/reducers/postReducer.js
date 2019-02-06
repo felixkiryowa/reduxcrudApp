@@ -1,4 +1,4 @@
-import  { ADD_ITEM, DELETE_ITEM }  from '../actions/types';
+import  { ADD_ITEM, DELETE_ITEM, EDIT_ITEM, UPDATE_ITEM }  from '../actions/types';
 // const initialState = {
 //     item: []
 // }
@@ -9,12 +9,24 @@ export default function postReducer(state = [], action){
           
           return state.concat(action.payload)
         case DELETE_ITEM:
-            // return state.filter((post)=>post.id !== action.id);
-            state.forEach(element => {
-                if(element.id === action.id) {
-                    return state.splice(element);
-                }   
-            });
+            return state.filter((post)=>post.id !== action.id);
+        case EDIT_ITEM:
+            return state.map((post)=>post.id === action.id ? {...post,editing:!post.editing}:post)
+        case UPDATE_ITEM:
+            console.log('Updating!!!');
+            return state.map((post)=>{
+              if(post.id === action.id) {
+                return {
+                   ...post,
+                   title:action.payload.title,
+                   body:action.payload.body,
+                   editing: !post.editing
+                }
+              } else {
+                  return post;
+              }
+            })
+      
         default:
             return state;
     }
